@@ -159,22 +159,41 @@
         <div class="page-title">
             분리사 스케줄
         </div>
-        <div class="calendar-horizontal-container">
-            <div class="calendar-horizontal">
-                <div class="day-column">
+        <div class="calendar-container-wrapper">
+            <div class="calendar-vertical-section">
+                <div class="day-row">
                     <div class="day-header">1일</div>
                     <div class="day-schedule">
-                        <div class="schedule-time">1~3시</div>
-                        <div class="schedule-names">김지원 / 이수진 / 박민호</div>
+                        <div class="schedule-block">
+                            <div class="schedule-time">1~3시</div>
+                            <div class="schedule-names">김아무개</div>
+                            <button class="match-btn" onclick="showMatchTooltip(this)" title="매칭되었습니다">매칭</button>
+                        </div>
+                        <div class="schedule-block">
+                            <div class="schedule-time">2~4시</div>
+                            <div class="schedule-names">김아무개</div>
+                            <button class="match-btn" onclick="showMatchTooltip(this)" title="매칭되었습니다">매칭</button>
+                        </div>
                     </div>
                 </div>
-                <div class="day-column">
+                <div class="day-row">
                     <div class="day-header">2일</div>
                     <div class="day-schedule">
-                        <div class="schedule-time">2~4시</div>
-                        <div class="schedule-names">최영희 / 정대현</div>
+                        <div class="schedule-block">
+                            <div class="schedule-time">1~3시</div>
+                            <div class="schedule-names">김아무개</div>
+                            <button class="match-btn" onclick="showMatchTooltip(this)" title="매칭되었습니다">매칭</button>
+                        </div>
+                        <div class="schedule-block">
+                            <div class="schedule-time">2~4시</div>
+                            <div class="schedule-names">김아무개</div>
+                            <button class="match-btn" onclick="showMatchTooltip(this)" title="매칭되었습니다">매칭</button>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="calendar-horizontal-container">
+                <div class="calendar-horizontal">
                 <div class="day-column">
                     <div class="day-header">3일</div>
                     <div class="day-schedule">
@@ -313,6 +332,11 @@
                     </div>
                 </div>
             </div>
+            <button class="separator-list-btn" id="separatorListBtn" draggable="true">
+                <span>전체</span>
+                <span>분리사</span>
+                <span>열람</span>
+            </button>
         </div>
     </main>
 
@@ -334,6 +358,75 @@
 
         function closeSeparatorSidebar() {
             document.getElementById('separatorSidebar').classList.remove('open');
+        }
+
+        // 드래그 기능
+        const separatorListBtn = document.getElementById('separatorListBtn');
+        const sidebar = document.getElementById('separatorSidebar');
+        let isDragging = false;
+        let startX = 0;
+        let startLeft = -350;
+
+        separatorListBtn.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startLeft = sidebar.classList.contains('open') ? 0 : -350;
+            e.preventDefault();
+        });
+
+        separatorListBtn.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startLeft = sidebar.classList.contains('open') ? 0 : -350;
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const diff = e.clientX - startX;
+            const newLeft = Math.max(-350, Math.min(0, startLeft + diff));
+            sidebar.style.left = newLeft + 'px';
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const diff = e.touches[0].clientX - startX;
+            const newLeft = Math.max(-350, Math.min(0, startLeft + diff));
+            sidebar.style.left = newLeft + 'px';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            const currentLeft = parseInt(sidebar.style.left);
+            if (currentLeft > -175) {
+                sidebar.classList.add('open');
+                sidebar.style.left = '0px';
+            } else {
+                sidebar.classList.remove('open');
+                sidebar.style.left = '-350px';
+            }
+        });
+
+        document.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            const currentLeft = parseInt(sidebar.style.left);
+            if (currentLeft > -175) {
+                sidebar.classList.add('open');
+                sidebar.style.left = '0px';
+            } else {
+                sidebar.classList.remove('open');
+                sidebar.style.left = '-350px';
+            }
+        });
+
+        function showMatchTooltip(btn) {
+            btn.classList.add('show-tooltip');
+            setTimeout(() => {
+                btn.classList.remove('show-tooltip');
+            }, 2000);
         }
     </script>
 </body>
