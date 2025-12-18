@@ -223,6 +223,55 @@
     white-space: nowrap;
 }
 
+/* 설명란 */
+.description-section {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.description-item {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.description-item:last-child {
+    margin-bottom: 0;
+}
+
+.desc-label {
+    font-weight: bold;
+    color: #333;
+    min-width: 100px;
+}
+
+.desc-text {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .description-section {
+        margin: 1.5rem auto 0;
+        padding: 0.75rem;
+    }
+
+    .description-item {
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.85rem;
+    }
+
+    .desc-label {
+        min-width: auto;
+    }
+}
+
 /* 목록으로 가기 버튼 */
 .back-to-list-btn {
     position: fixed;
