@@ -171,6 +171,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.2rem;
+    align-items: start;
 }
 
 @media (min-width: 480px) {
@@ -186,8 +187,8 @@
 }
 
 .day {
-    min-height: 80px;
-    aspect-ratio: 1;
+    height: 80px;
+    width: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     padding: 0.3rem;
@@ -200,20 +201,19 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 @media (min-width: 480px) {
     .day {
-        min-height: 90px;
+        height: 90px;
         padding: 0.4rem;
     }
 }
 
 @media (min-width: 768px) {
     .day {
-        min-height: 120px;
         height: 120px;
-        aspect-ratio: auto;
         padding: 0.5rem;
         border-radius: 8px;
     }
@@ -239,18 +239,22 @@
     margin-bottom: 0.2rem;
     color: #333;
     line-height: 1;
+    flex-shrink: 0;
+    height: 1rem;
 }
 
 @media (min-width: 480px) {
     .day-number {
         font-size: 0.85rem;
         margin-bottom: 0.25rem;
+        height: 1.1rem;
     }
 }
 
 @media (min-width: 768px) {
     .day-number {
         font-size: 0.9rem;
+        height: 1.2rem;
     }
 }
 
@@ -261,15 +265,17 @@
     gap: 0.15rem;
     margin-bottom: 0.2rem;
     overflow-y: auto;
-    max-height: 35px;
+    overflow-x: hidden;
+    max-height: 30px;
     min-height: 0;
+    flex-shrink: 1;
 }
 
 @media (min-width: 480px) {
     .day-schedules {
         gap: 0.2rem;
         margin-bottom: 0.25rem;
-        max-height: 45px;
+        max-height: 40px;
     }
 }
 
@@ -281,7 +287,7 @@
 
 .schedule-item {
     font-size: 0.6rem;
-    padding: 0.15rem 0.3rem;
+    padding: 0.1rem 0.25rem;
     background-color: #e3f2fd;
     border-radius: 3px;
     color: #1976d2;
@@ -289,12 +295,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.2;
+    flex-shrink: 0;
+    max-width: 100%;
 }
 
 @media (min-width: 480px) {
     .schedule-item {
         font-size: 0.65rem;
-        padding: 0.2rem 0.35rem;
+        padding: 0.15rem 0.3rem;
     }
 }
 
@@ -310,18 +318,21 @@
     display: flex;
     gap: 0.15rem;
     margin-top: auto;
-    min-height: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 @media (min-width: 480px) {
     .day-actions {
         gap: 0.2rem;
+        height: 22px;
     }
 }
 
 @media (min-width: 768px) {
     .day-actions {
         gap: 0.25rem;
+        height: 24px;
     }
 }
 
@@ -341,23 +352,23 @@
     color: white;
     border: none;
     border-radius: 3px;
-    padding: 0.2rem 0.15rem;
+    padding: 0;
     font-size: 0.65rem;
     cursor: pointer;
     transition: background-color 0.3s;
     position: relative;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    min-height: 20px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 @media (min-width: 480px) {
     .schedule-add-btn,
     .supporter-btn {
-        padding: 0.25rem 0.2rem;
         font-size: 0.7rem;
         border-radius: 4px;
     }
@@ -366,7 +377,6 @@
 @media (min-width: 768px) {
     .schedule-add-btn,
     .supporter-btn {
-        padding: 0.3rem;
         font-size: 0.75rem;
     }
 }
