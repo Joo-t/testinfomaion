@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INHAIR - 내 프로필</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="page4.css">
+</head>
+<body>
+    <!-- 상단 -->
+    <header>
+        <nav>
+            <div class="logo">INHAIR</div>
+            <div class="user-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.59 22C20.59 18.13 16.74 15 12 15C7.26 15 3.41 18.13 3.41 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 목록으로 가기 버튼 -->
+    <a href="index.html" class="back-to-list-btn">목록으로 가기</a>
+
+    <!-- 중단 -->
+    <main style="padding-bottom: 80px; padding-top: 1rem;">
+        <div class="page-title">
+            내 프로필
+        </div>
+        <div class="profile-container">
+            <!-- 프로필 기본 정보 -->
+            <div class="profile-section">
+                <div class="profile-photo-section">
+                    <div class="profile-photo">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.59 22C20.59 18.13 16.74 15 12 15C7.26 15 3.41 18.13 3.41 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-label">이름:</span>
+                        <span class="info-value">이혜인</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">성별:</span>
+                        <span class="info-value">여</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">나이:</span>
+                        <span class="info-value">28세</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 내 등급 -->
+            <div class="profile-section">
+                <div class="section-title">내 등급</div>
+                <div class="grade-display">
+                    <div class="grade-badge grade-b">B</div>
+                    <div class="grade-info">
+                        <div class="grade-text">등급: B</div>
+                        <div class="grade-desc">중급 분리사</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 내 수강진도 -->
+            <div class="profile-section">
+                <div class="section-title">내 수강진도</div>
+                <div class="progress-section">
+                    <div class="progress-item">
+                        <div class="progress-label">기초과정</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="progress-text">100%</div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">중급과정</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="progress-text">75%</div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">고급과정</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                        <div class="progress-text">30%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 실습횟수 / 병원 -->
+            <div class="profile-section">
+                <div class="section-title">실습횟수 / 병원</div>
+                <div class="hospital-stats">
+                    <div class="stat-card">
+                        <div class="stat-label">총 실습횟수</div>
+                        <div class="stat-value">150회</div>
+                    </div>
+                    <div class="hospital-list">
+                        <div class="hospital-item">
+                            <div class="hospital-name">서울대학교병원</div>
+                            <div class="hospital-count">45회</div>
+                        </div>
+                        <div class="hospital-item">
+                            <div class="hospital-name">세브란스병원</div>
+                            <div class="hospital-count">30회</div>
+                        </div>
+                        <div class="hospital-item">
+                            <div class="hospital-name">삼성서울병원</div>
+                            <div class="hospital-count">25회</div>
+                        </div>
+                        <div class="hospital-item">
+                            <div class="hospital-name">아산병원</div>
+                            <div class="hospital-count">20회</div>
+                        </div>
+                        <div class="hospital-item">
+                            <div class="hospital-name">가톨릭의대</div>
+                            <div class="hospital-count">15회</div>
+                        </div>
+                        <div class="hospital-item">
+                            <div class="hospital-name">기타 병원</div>
+                            <div class="hospital-count">15회</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 하단 -->
+    <footer>
+        <div class="footer-nav">
+            <button class="footer-btn active">내 프로필</button>
+            <span class="footer-divider">|</span>
+            <button class="footer-btn">스케줄관리</button>
+            <span class="footer-divider">|</span>
+            <button class="footer-btn">강의자료</button>
+        </div>
+    </footer>
+</body>
+</html>
+
