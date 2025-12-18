@@ -8,6 +8,7 @@
     display: flex;
     gap: 1rem;
     align-items: flex-start;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -33,6 +34,68 @@
     flex: 1;
     max-width: 600px;
     width: 100%;
+    position: relative;
+}
+
+.calendar-add-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.calendar-add-btn:hover {
+    background-color: #5568d3;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+}
+
+.calendar-add-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 0.5rem;
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.calendar-add-btn:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .calendar-add-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.75rem;
+        bottom: 0.75rem;
+        right: 0.75rem;
+    }
 }
 
 @media (min-width: 480px) {
@@ -320,6 +383,7 @@
     margin-top: auto;
     height: 20px;
     flex-shrink: 0;
+    justify-content: center;
 }
 
 @media (min-width: 480px) {
@@ -345,9 +409,7 @@
     display: block;
 }
 
-.schedule-add-btn,
 .supporter-btn {
-    flex: 1;
     background-color: #667eea;
     color: white;
     border: none;
@@ -360,6 +422,7 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,7 +430,6 @@
 }
 
 @media (min-width: 480px) {
-    .schedule-add-btn,
     .supporter-btn {
         font-size: 0.7rem;
         border-radius: 4px;
@@ -375,13 +437,11 @@
 }
 
 @media (min-width: 768px) {
-    .schedule-add-btn,
     .supporter-btn {
         font-size: 0.75rem;
     }
 }
 
-.schedule-add-btn:hover,
 .supporter-btn:hover {
     background-color: #5568d3;
 }
@@ -394,7 +454,6 @@
     background-color: #c62828 !important;
 }
 
-.schedule-add-btn::after,
 .supporter-btn::after {
     content: attr(title);
     position: absolute;
@@ -413,7 +472,6 @@
     margin-bottom: 0.5rem;
 }
 
-.schedule-add-btn:hover::after,
 .supporter-btn:hover::after {
     opacity: 1;
 }
