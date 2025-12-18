@@ -11,35 +11,145 @@
     text-align: center;
 }
 
-/* 분리사 목록 컨테이너 */
-.separator-list-container {
-    max-width: 1200px;
+/* 가로 달력 컨테이너 */
+.calendar-horizontal-container {
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 1rem;
-    height: calc(100vh - 200px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.calendar-horizontal {
+    display: flex;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    min-width: max-content;
+}
+
+.day-column {
+    min-width: 120px;
+    width: 120px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.day-header {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #667eea;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.day-schedule {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.schedule-time {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #e3f2fd;
+    padding: 0.4rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.schedule-names {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* 분리사 열람 사이드바 */
+.separator-sidebar {
+    position: fixed;
+    left: -350px;
+    top: 0;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: left 0.3s ease;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
 
+.separator-sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    background: #667eea;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.3s;
+}
+
+.sidebar-close:hover {
+    transform: scale(1.2);
+}
+
 .separator-list {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-bottom: 1rem;
 }
 
 .separator-item {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 1.25rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
     transition: all 0.3s;
     cursor: pointer;
+    border: 1px solid #e0e0e0;
 }
 
 .separator-item:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transform: translateY(-2px);
+    background: #f0f0f0;
+    border-color: #667eea;
+    transform: translateX(5px);
 }
 
 .separator-info {
@@ -49,26 +159,24 @@
 }
 
 .separator-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 0.25rem;
 }
 
 .separator-details {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.85rem;
     color: #666;
 }
 
 .detail-item {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    background-color: #f5f5f5;
+    padding: 0.3rem 0.5rem;
+    background-color: white;
     border-radius: 4px;
-    white-space: nowrap;
+    border-left: 3px solid #667eea;
 }
 
 /* 목록으로 가기 버튼 */
@@ -114,42 +222,15 @@
         padding: 0.4rem 0.75rem;
         font-size: 0.7rem;
     }
-}
 
-/* 모바일 반응형 */
-@media (max-width: 768px) {
-    .separator-list-container {
-        padding: 0 0.5rem;
-        height: calc(100vh - 180px);
+    .day-column {
+        min-width: 100px;
+        width: 100px;
+        padding: 0.75rem;
     }
 
-    .separator-item {
-        padding: 1rem;
-    }
-
-    .separator-name {
-        font-size: 1.1rem;
-    }
-
-    .separator-details {
-        font-size: 0.85rem;
-        gap: 0.5rem;
-    }
-
-    .detail-item {
-        font-size: 0.8rem;
-        padding: 0.2rem 0.4rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .separator-details {
-        flex-direction: column;
-        gap: 0.4rem;
-    }
-
-    .detail-item {
+    .separator-sidebar {
         width: 100%;
+        left: -100%;
     }
 }
-

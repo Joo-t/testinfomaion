@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INHAIR - 분리사 열람</title>
+    <title>INHAIR - 분리사 스케줄</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="page2.css">
 </head>
@@ -24,155 +24,292 @@
     <!-- 목록으로 가기 버튼 -->
     <a href="index.html" class="back-to-list-btn">목록으로 가기</a>
 
+    <!-- 분리사 열람 사이드바 -->
+    <div id="separatorSidebar" class="separator-sidebar">
+        <div class="sidebar-header">
+            <h2>분리사 열람</h2>
+            <button class="sidebar-close" onclick="closeSeparatorSidebar()">&times;</button>
+        </div>
+        <div class="separator-list">
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">김지원</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 여</span>
+                        <span class="detail-item">나이: 32세</span>
+                        <span class="detail-item">실무횟수: 150회</span>
+                        <span class="detail-item">등급: B</span>
+                        <span class="detail-item">우리병원 근무횟수: 25회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">이수진</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 여</span>
+                        <span class="detail-item">나이: 28세</span>
+                        <span class="detail-item">실무횟수: 120회</span>
+                        <span class="detail-item">등급: A</span>
+                        <span class="detail-item">우리병원 근무횟수: 18회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">박민호</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 남</span>
+                        <span class="detail-item">나이: 35세</span>
+                        <span class="detail-item">실무횟수: 200회</span>
+                        <span class="detail-item">등급: S</span>
+                        <span class="detail-item">우리병원 근무횟수: 45회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">최영희</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 여</span>
+                        <span class="detail-item">나이: 30세</span>
+                        <span class="detail-item">실무횟수: 180회</span>
+                        <span class="detail-item">등급: A</span>
+                        <span class="detail-item">우리병원 근무횟수: 30회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">정대현</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 남</span>
+                        <span class="detail-item">나이: 29세</span>
+                        <span class="detail-item">실무횟수: 95회</span>
+                        <span class="detail-item">등급: C</span>
+                        <span class="detail-item">우리병원 근무횟수: 12회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">한소희</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 여</span>
+                        <span class="detail-item">나이: 27세</span>
+                        <span class="detail-item">실무횟수: 80회</span>
+                        <span class="detail-item">등급: B</span>
+                        <span class="detail-item">우리병원 근무횟수: 8회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">윤서연</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 여</span>
+                        <span class="detail-item">나이: 33세</span>
+                        <span class="detail-item">실무횟수: 220회</span>
+                        <span class="detail-item">등급: S</span>
+                        <span class="detail-item">우리병원 근무횟수: 50회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">조성민</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 남</span>
+                        <span class="detail-item">나이: 31세</span>
+                        <span class="detail-item">실무횟수: 160회</span>
+                        <span class="detail-item">등급: A</span>
+                        <span class="detail-item">우리병원 근무횟수: 22회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">강민호</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 남</span>
+                        <span class="detail-item">나이: 26세</span>
+                        <span class="detail-item">실무횟수: 60회</span>
+                        <span class="detail-item">등급: D</span>
+                        <span class="detail-item">우리병원 근무횟수: 5회</span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator-item">
+                <div class="separator-info">
+                    <div class="separator-name">송지은</div>
+                    <div class="separator-details">
+                        <span class="detail-item">성별: 여</span>
+                        <span class="detail-item">나이: 29세</span>
+                        <span class="detail-item">실무횟수: 140회</span>
+                        <span class="detail-item">등급: B</span>
+                        <span class="detail-item">우리병원 근무횟수: 20회</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 중단 -->
     <main style="padding-bottom: 70px; padding-top: 1rem;">
         <div class="page-title">
-            분리사 열람
+            분리사 스케줄
         </div>
-        <div class="separator-list-container">
-            <div class="separator-list">
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">김지원</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 32세</span>
-                            <span class="detail-item">실무횟수: 150회</span>
-                            <span class="detail-item">등급: B</span>
-                            <span class="detail-item">우리병원 근무횟수: 25회</span>
-                        </div>
+        <div class="calendar-horizontal-container">
+            <div class="calendar-horizontal">
+                <div class="day-column">
+                    <div class="day-header">1일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">1~3시</div>
+                        <div class="schedule-names">김지원 / 이수진 / 박민호</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">이수진</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 28세</span>
-                            <span class="detail-item">실무횟수: 120회</span>
-                            <span class="detail-item">등급: A</span>
-                            <span class="detail-item">우리병원 근무횟수: 18회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">2일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">2~4시</div>
+                        <div class="schedule-names">최영희 / 정대현</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">박민호</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 남</span>
-                            <span class="detail-item">나이: 35세</span>
-                            <span class="detail-item">실무횟수: 200회</span>
-                            <span class="detail-item">등급: S</span>
-                            <span class="detail-item">우리병원 근무횟수: 45회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">3일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">1~3시</div>
+                        <div class="schedule-names">한소희 / 윤서연</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">최영희</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 30세</span>
-                            <span class="detail-item">실무횟수: 180회</span>
-                            <span class="detail-item">등급: A</span>
-                            <span class="detail-item">우리병원 근무횟수: 30회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">4일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">5일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">3~5시</div>
+                        <div class="schedule-names">조성민 / 강민호</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">정대현</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 남</span>
-                            <span class="detail-item">나이: 29세</span>
-                            <span class="detail-item">실무횟수: 95회</span>
-                            <span class="detail-item">등급: C</span>
-                            <span class="detail-item">우리병원 근무횟수: 12회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">6일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">7일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">10~12시</div>
+                        <div class="schedule-names">송지은 / 김지원</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">한소희</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 27세</span>
-                            <span class="detail-item">실무횟수: 80회</span>
-                            <span class="detail-item">등급: B</span>
-                            <span class="detail-item">우리병원 근무횟수: 8회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">8일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">9일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">10일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">2~4시</div>
+                        <div class="schedule-names">이수진 / 박민호</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">윤서연</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 33세</span>
-                            <span class="detail-item">실무횟수: 220회</span>
-                            <span class="detail-item">등급: S</span>
-                            <span class="detail-item">우리병원 근무횟수: 50회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">11일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">12일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">13일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">14일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">1~3시</div>
+                        <div class="schedule-names">최영희 / 정대현 / 한소희</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">조성민</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 남</span>
-                            <span class="detail-item">나이: 31세</span>
-                            <span class="detail-item">실무횟수: 160회</span>
-                            <span class="detail-item">등급: A</span>
-                            <span class="detail-item">우리병원 근무횟수: 22회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">15일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">16일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">17일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">18일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">19일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">20일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">3~5시</div>
+                        <div class="schedule-names">윤서연 / 조성민</div>
                     </div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">강민호</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 남</span>
-                            <span class="detail-item">나이: 26세</span>
-                            <span class="detail-item">실무횟수: 60회</span>
-                            <span class="detail-item">등급: D</span>
-                            <span class="detail-item">우리병원 근무횟수: 5회</span>
-                        </div>
-                    </div>
+                <div class="day-column">
+                    <div class="day-header">21일</div>
+                    <div class="day-schedule"></div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">송지은</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 29세</span>
-                            <span class="detail-item">실무횟수: 140회</span>
-                            <span class="detail-item">등급: B</span>
-                            <span class="detail-item">우리병원 근무횟수: 20회</span>
-                        </div>
-                    </div>
+                <div class="day-column">
+                    <div class="day-header">22일</div>
+                    <div class="day-schedule"></div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">오현수</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 남</span>
-                            <span class="detail-item">나이: 34세</span>
-                            <span class="detail-item">실무횟수: 190회</span>
-                            <span class="detail-item">등급: A</span>
-                            <span class="detail-item">우리병원 근무횟수: 35회</span>
-                        </div>
-                    </div>
+                <div class="day-column">
+                    <div class="day-header">23일</div>
+                    <div class="day-schedule"></div>
                 </div>
-                <div class="separator-item">
-                    <div class="separator-info">
-                        <div class="separator-name">임수진</div>
-                        <div class="separator-details">
-                            <span class="detail-item">성별: 여</span>
-                            <span class="detail-item">나이: 28세</span>
-                            <span class="detail-item">실무횟수: 110회</span>
-                            <span class="detail-item">등급: B</span>
-                            <span class="detail-item">우리병원 근무횟수: 15회</span>
-                        </div>
+                <div class="day-column">
+                    <div class="day-header">24일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">25일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">26일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">27일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">28일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">29일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">30일</div>
+                    <div class="day-schedule"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">31일</div>
+                    <div class="day-schedule">
+                        <div class="schedule-time">1~3시</div>
+                        <div class="schedule-names">강민호 / 송지은</div>
                     </div>
                 </div>
             </div>
@@ -184,11 +321,20 @@
         <div class="footer-nav">
             <button class="footer-btn">스케줄관리</button>
             <span class="footer-divider">|</span>
-            <button class="footer-btn active">분리사열람</button>
+            <button class="footer-btn active" onclick="openSeparatorSidebar()">분리사열람</button>
             <span class="footer-divider">|</span>
             <button class="footer-btn">즐겨찾기</button>
         </div>
     </footer>
+
+    <script>
+        function openSeparatorSidebar() {
+            document.getElementById('separatorSidebar').classList.add('open');
+        }
+
+        function closeSeparatorSidebar() {
+            document.getElementById('separatorSidebar').classList.remove('open');
+        }
+    </script>
 </body>
 </html>
-
