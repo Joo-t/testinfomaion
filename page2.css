@@ -1,26 +1,51 @@
 /* Page2 전용 스타일 */
 
-/* 페이지 타이틀 */
-.page-title {
+/* 탭 버튼 */
+.tab-buttons {
     max-width: 1200px;
     margin: 0 auto 1.5rem;
     padding: 0 1rem;
-    font-size: 1.1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.tab-btn {
+    background-color: #f5f5f5;
+    color: #666;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: bold;
-    color: #333;
-    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.tab-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-btn.active {
+    background-color: #667eea;
+    color: white;
+}
+
+.view-content {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* 달력 컨테이너 래퍼 */
 .calendar-container-wrapper {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 1rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    position: relative;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 280px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* 세로 달력 섹션 (1일~31일) */
@@ -28,24 +53,24 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    flex: 1;
-    max-width: 100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .day-row {
     background: white;
+    border: 2px solid #e0e0e0;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    min-height: 120px;
+    min-height: 100px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .day-row .day-header {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #667eea;
     margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #e0e0e0;
@@ -61,7 +86,7 @@
 .schedule-block {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
     padding: 0.75rem;
     background-color: #f9f9f9;
     border-radius: 6px;
@@ -78,39 +103,42 @@
     text-align: center;
 }
 
-.schedule-block .schedule-names {
-    font-size: 0.85rem;
-    color: #666;
-    text-align: center;
+.schedule-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
 }
 
-.match-btn {
+.schedule-names {
+    font-size: 0.9rem;
+    color: #333;
+    flex: 1;
+}
+
+.match-btn-small {
     background-color: #667eea;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
     position: relative;
-    width: 100%;
+    flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    white-space: nowrap;
 }
 
-.match-btn:hover {
+.match-btn-small:hover {
     background-color: #5568d3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    transform: scale(1.05);
 }
 
-.match-btn:active {
-    transform: translateY(0);
-}
-
-.match-btn::after {
+.match-btn-small::after {
     content: attr(title);
     position: absolute;
     bottom: 100%;
@@ -118,9 +146,9 @@
     transform: translateX(-50%);
     background-color: #333;
     color: white;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
@@ -129,92 +157,41 @@
     z-index: 10;
 }
 
-.match-btn.show-tooltip::after {
+.match-btn-small.show-tooltip::after {
     opacity: 1;
 }
 
-
-/* 분리사 열람 사이드바 */
-.separator-sidebar {
-    position: fixed;
-    left: -350px;
-    top: 0;
-    width: 350px;
-    height: 100vh;
-    background: white;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: left 0.3s ease;
+/* 전체 열람 화면 */
+.separator-list-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: calc(100vh - 280px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
 
-.separator-sidebar.dragging {
-    transition: none;
-}
-
-.separator-sidebar.open {
-    left: 0;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-    border-bottom: 1px solid #e0e0e0;
-    background: #667eea;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.sidebar-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-.sidebar-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    transition: transform 0.3s;
-}
-
-.sidebar-close:hover {
-    transform: scale(1.2);
-}
-
 .separator-list {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-bottom: 1rem;
 }
 
 .separator-item {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 1rem;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1.25rem;
     transition: all 0.3s;
     cursor: pointer;
-    border: 1px solid #e0e0e0;
 }
 
 .separator-item:hover {
-    background: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-color: #667eea;
-    transform: translateX(5px);
+    transform: translateY(-2px);
 }
 
 .separator-info {
@@ -224,24 +201,26 @@
 }
 
 .separator-name {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #333;
+    margin-bottom: 0.25rem;
 }
 
 .separator-details {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.9rem;
     color: #666;
 }
 
 .detail-item {
-    padding: 0.3rem 0.5rem;
-    background-color: white;
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    background-color: #f5f5f5;
     border-radius: 4px;
-    border-left: 3px solid #667eea;
+    white-space: nowrap;
 }
 
 /* 목록으로 가기 버튼 */
@@ -288,14 +267,16 @@
         font-size: 0.7rem;
     }
 
-    .day-column {
-        min-width: 100px;
-        width: 100px;
+    .day-row {
         padding: 0.75rem;
     }
 
-    .separator-sidebar {
+    .schedule-name-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .match-btn-small {
         width: 100%;
-        left: -100%;
     }
 }
