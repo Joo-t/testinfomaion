@@ -1,0 +1,153 @@
+/* ============================================
+   INHAIR ACADEMY - Main Stylesheet
+   심플하고 세련된 화이트 앤 블랙 디자인
+   ============================================ */
+
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #ffffff;
+    --color-text: #000000;
+    --color-text-secondary: #666666;
+    --color-border: #e5e5e5;
+    --color-nav-active: #000000;
+    --color-nav-inactive: #999999;
+}
+
+body {
+    height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* HEADER */
+header {
+    height: 72px;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-text);
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* CONTENT AREA */
+main {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--color-bg);
+    -webkit-overflow-scrolling: touch;
+}
+
+/* BOTTOM NAVIGATION */
+nav {
+    height: 72px;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 0;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: opacity 0.2s ease;
+    border: none;
+    background: transparent;
+}
+
+.nav-item img,
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+}
+
+.nav-item svg {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.nav-item.active {
+    color: var(--color-nav-active);
+    opacity: 1;
+}
+
+.nav-item:not(.active) {
+    color: var(--color-nav-inactive);
+    opacity: 0.6;
+}
+
+.nav-item:active {
+    opacity: 0.8;
+}
+
+/* UTILITY CLASSES */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 24px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        font-size: 20px;
+    }
+
+    nav {
+        height: 64px;
+        padding: 6px 0;
+    }
+
+    .nav-item {
+        gap: 4px;
+        padding: 2px 4px;
+    }
+
+    .nav-item img,
+    .nav-item svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .section {
+        padding: 16px;
+    }
+}
