@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>마이페이지 - INHAIR 아카데미</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        /* ============================================
+           INHAIR ACADEMY - Main Stylesheet
+           심플하고 세련된 화이트 앤 블랙 디자인
+           ============================================ */
+
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-border: #e5e5e5;
+            --color-nav-active: #000000;
+            --color-nav-inactive: #999999;
+        }
+
+        body {
+            height: 100vh;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* HEADER */
+        header {
+            height: 72px;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--color-text);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* CONTENT AREA */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--color-bg);
+            -webkit-overflow-scrolling: touch;
+            padding: 32px 24px;
+        }
+
+        /* CONTENT STYLES */
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        /* PROFILE SECTION */
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .info-value {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* GRADE SECTION */
+        .grade-display {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .grade-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--color-text);
+        }
+
+        .grade-label {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* COURSE TABS */
+        .course-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .course-tab {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .course-tab.active {
+            color: var(--color-text);
+            border-bottom-color: var(--color-text);
+        }
+
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .course-item {
+            padding: 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+        }
+
+        .course-item-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .course-item-info {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        /* WORK INFO */
+        .work-stats {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .work-stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .work-stat-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        .hospital-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hospital-item {
+            padding: 14px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+        }
+
+        .hospital-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 4px;
+        }
+
+        .hospital-period {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* BOTTOM NAVIGATION */
+        nav {
+            height: 72px;
+            background: var(--color-bg);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 8px 0;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: opacity 0.2s ease;
+            border: none;
+            background: transparent;
+        }
+
+        .nav-item img,
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-item svg {
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .nav-item.active {
+            color: var(--color-nav-active);
+            opacity: 1;
+        }
+
+        .nav-item:not(.active) {
+            color: var(--color-nav-inactive);
+            opacity: 0.6;
+        }
+
+        .nav-item:active {
+            opacity: 0.8;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                font-size: 20px;
+            }
+
+            main {
+                padding: 24px 16px;
+            }
+
+            .section {
+                margin-bottom: 32px;
+            }
+
+            .section-title {
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+
+            .grade-number {
+                font-size: 28px;
+            }
+
+            .work-stats {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            nav {
+                height: 64px;
+                padding: 6px 0;
+            }
+
+            .nav-item {
+                gap: 4px;
+                padding: 2px 4px;
+            }
+
+            .nav-item img,
+            .nav-item svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>INHAIR ACADEMY</header>
+
+<main>
+    <div class="content">
+        <!-- 개인정보 -->
+        <div class="section">
+            <h2 class="section-title">개인정보</h2>
+            <div class="profile-info">
+                <div class="info-row">
+                    <span class="info-label">이름</span>
+                    <span class="info-value">홍길동</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">연락처</span>
+                    <span class="info-value">010-1234-5678</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">이메일</span>
+                    <span class="info-value">user@example.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 등급 -->
+        <div class="section">
+            <h2 class="section-title">내 등급</h2>
+            <div class="grade-display">
+                <span class="grade-number">3</span>
+                <span class="grade-label">등급</span>
+            </div>
+        </div>
+
+        <!-- 수강정보 -->
+        <div class="section">
+            <h2 class="section-title">수강정보</h2>
+            <div class="course-tabs">
+                <button class="course-tab active">수강중</button>
+                <button class="course-tab">수강완료</button>
+                <button class="course-tab">실무</button>
+            </div>
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-item-name">모낭분리 기본 과정</div>
+                    <div class="course-item-info">2024.01.15 ~ 2024.02.15 (진행중)</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-name">모낭분리 고급 과정</div>
+                    <div class="course-item-info">2024.03.01 ~ 2024.03.29 (예정)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 근무정보 -->
+        <div class="section">
+            <h2 class="section-title">근무정보</h2>
+            <div class="work-stats">
+                <div class="work-stat-item">
+                    <span class="work-stat-number">47</span>
+                    <span class="work-stat-label">근무횟수</span>
+                </div>
+            </div>
+            <div class="hospital-list">
+                <div class="hospital-item">
+                    <div class="hospital-name">강남 탈모 전문 병원</div>
+                    <div class="hospital-period">2024.01.01 ~ 현재</div>
+                </div>
+                <div class="hospital-item">
+                    <div class="hospital-name">한강 모발이식 센터</div>
+                    <div class="hospital-period">2023.08.01 ~ 2023.12.31</div>
+                </div>
+                <div class="hospital-item">
+                    <div class="hospital-name">서울 헤어 클리닉</div>
+                    <div class="hospital-period">2023.05.01 ~ 2023.07.31</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<nav>
+    <button class="nav-item">
+        <img src="icon/home.png" alt="홈" />
+    </button>
+    <button class="nav-item">
+        <img src="icon/schedule.png" alt="일정" />
+    </button>
+    <button class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="m16.034,18.101c1.84.992,3.285,2.63,3.913,4.652.094.303.039.634-.15.89s-.487.407-.805.407H4.993c-.318,0-.617-.151-.805-.407s-.244-.586-.15-.89c.63-2.026,2.079-3.666,3.924-4.658.473-.254,1.061-.148,1.405.265l1.949,2.338c.356.427,1.012.427,1.368,0l1.944-2.333c.344-.413.933-.519,1.406-.264Zm4.622-15.451L14.192.369c-1.388-.491-2.916-.492-4.303-.006L3.346,2.653c-.818.286-1.346,1.03-1.346,1.896,0,.867.529,1.611,1.347,1.896l6.507,2.27c.689.24,1.414.361,2.138.361s1.448-.121,2.137-.361l5.864-2.045v4.379c0,.552.448,1,1,1s1-.448,1-1c0,0,.004-6.493.004-6.502.001-.865-.525-1.61-1.34-1.898Zm-2.664,6.836l-3.205,1.118c-1.798.627-3.793.627-5.592,0l-3.203-1.118v.563c0,3.309,2.691,6,6,6s6-2.691,6-6v-.564Z"/>
+        </svg>
+    </button>
+    <button class="nav-item">
+        <img src="icon/hospital.png" alt="병원" />
+    </button>
+    <button class="nav-item active">
+        <img src="icon/user.png" alt="마이페이지" />
+    </button>
+</nav>
+
+</body>
+</html>
