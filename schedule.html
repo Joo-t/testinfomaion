@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>일정 관리 - INHAIR 아카데미</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        /* ============================================
+           INHAIR ACADEMY - Main Stylesheet
+           심플하고 세련된 화이트 앤 블랙 디자인
+           ============================================ */
+
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-border: #e5e5e5;
+            --color-nav-active: #000000;
+            --color-nav-inactive: #999999;
+        }
+
+        body {
+            height: 100vh;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* HEADER */
+        header {
+            height: 72px;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--color-text);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* CONTENT AREA */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--color-bg);
+            -webkit-overflow-scrolling: touch;
+            padding: 32px 24px;
+        }
+
+        /* CONTENT STYLES */
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        /* CALENDAR */
+        .calendar {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: #f5f5f5;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .calendar-month {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 12px;
+        }
+
+        .calendar-nav-btn {
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: #fafafa;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .calendar-weekday {
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--color-text);
+            border-right: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .calendar-day:nth-child(7n) {
+            border-right: none;
+        }
+
+        .calendar-day.other-month {
+            color: var(--color-text-secondary);
+            opacity: 0.3;
+        }
+
+        .calendar-day.working {
+            background: #000;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .calendar-day.hiring {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .calendar-day-status {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--color-text);
+        }
+
+        .calendar-day.working .calendar-day-status {
+            background: #fff;
+        }
+
+        .calendar-day.hiring .calendar-day-status {
+            background: var(--color-text);
+        }
+
+        /* STATUS TABS */
+        .status-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .status-tab {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .status-tab.active {
+            color: var(--color-text);
+            border-bottom-color: var(--color-text);
+        }
+
+        .status-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .status-item {
+            padding: 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+        }
+
+        .status-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .status-item-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .status-item-period {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .status-item-info {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        /* SCHEDULE FORM */
+        .schedule-form {
+            background: #f5f5f5;
+            padding: 24px;
+            border-radius: 8px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--color-text);
+            background: var(--color-bg);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--color-text);
+            color: var(--color-bg);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .form-btn:hover {
+            opacity: 0.9;
+        }
+
+        .form-btn:active {
+            opacity: 0.8;
+        }
+
+        /* BOTTOM NAVIGATION */
+        nav {
+            height: 72px;
+            background: var(--color-bg);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 8px 0;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: opacity 0.2s ease;
+            border: none;
+            background: transparent;
+        }
+
+        .nav-item img,
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-item svg {
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .nav-item.active {
+            color: var(--color-nav-active);
+            opacity: 1;
+        }
+
+        .nav-item:not(.active) {
+            color: var(--color-nav-inactive);
+            opacity: 0.6;
+        }
+
+        .nav-item:active {
+            opacity: 0.8;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                font-size: 20px;
+            }
+
+            main {
+                padding: 24px 16px;
+            }
+
+            .section {
+                margin-bottom: 32px;
+            }
+
+            .calendar-day {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                height: 64px;
+                padding: 6px 0;
+            }
+
+            .nav-item {
+                gap: 4px;
+                padding: 2px 4px;
+            }
+
+            .nav-item img,
+            .nav-item svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>INHAIR ACADEMY</header>
+
+<main>
+    <div class="content">
+        <!-- 캘린더 -->
+        <div class="calendar">
+            <div class="calendar-header">
+                <div class="calendar-month">2024년 1월</div>
+                <div class="calendar-nav">
+                    <button class="calendar-nav-btn">‹</button>
+                    <button class="calendar-nav-btn">›</button>
+                </div>
+            </div>
+            <div class="calendar-weekdays">
+                <div class="calendar-weekday">일</div>
+                <div class="calendar-weekday">월</div>
+                <div class="calendar-weekday">화</div>
+                <div class="calendar-weekday">수</div>
+                <div class="calendar-weekday">목</div>
+                <div class="calendar-weekday">금</div>
+                <div class="calendar-weekday">토</div>
+            </div>
+            <div class="calendar-days">
+                <div class="calendar-day other-month">31</div>
+                <div class="calendar-day">1</div>
+                <div class="calendar-day">2</div>
+                <div class="calendar-day">3</div>
+                <div class="calendar-day">4</div>
+                <div class="calendar-day">5</div>
+                <div class="calendar-day">6</div>
+                <div class="calendar-day">7</div>
+                <div class="calendar-day">8</div>
+                <div class="calendar-day working">9<span class="calendar-day-status"></span></div>
+                <div class="calendar-day working">10<span class="calendar-day-status"></span></div>
+                <div class="calendar-day working">11<span class="calendar-day-status"></span></div>
+                <div class="calendar-day working">12<span class="calendar-day-status"></span></div>
+                <div class="calendar-day">13</div>
+                <div class="calendar-day">14</div>
+                <div class="calendar-day">15</div>
+                <div class="calendar-day">16</div>
+                <div class="calendar-day hiring">17<span class="calendar-day-status"></span></div>
+                <div class="calendar-day hiring">18<span class="calendar-day-status"></span></div>
+                <div class="calendar-day hiring">19<span class="calendar-day-status"></span></div>
+                <div class="calendar-day">20</div>
+                <div class="calendar-day">21</div>
+                <div class="calendar-day">22</div>
+                <div class="calendar-day">23</div>
+                <div class="calendar-day">24</div>
+                <div class="calendar-day working">25<span class="calendar-day-status"></span></div>
+                <div class="calendar-day working">26<span class="calendar-day-status"></span></div>
+                <div class="calendar-day working">27<span class="calendar-day-status"></span></div>
+                <div class="calendar-day">28</div>
+                <div class="calendar-day">29</div>
+                <div class="calendar-day">30</div>
+                <div class="calendar-day">31</div>
+                <div class="calendar-day other-month">1</div>
+                <div class="calendar-day other-month">2</div>
+                <div class="calendar-day other-month">3</div>
+            </div>
+        </div>
+
+        <!-- 일하는 기간 / 구인중 -->
+        <div class="section">
+            <div class="status-tabs">
+                <button class="status-tab active">일하는 기간</button>
+                <button class="status-tab">구인중</button>
+            </div>
+            <div class="status-list">
+                <div class="status-item">
+                    <div class="status-item-header">
+                        <div class="status-item-title">강남 탈모 전문 병원</div>
+                        <div class="status-item-period">2024.01.09 ~ 2024.01.12</div>
+                    </div>
+                    <div class="status-item-info">오전 9시 ~ 오후 6시</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-item-header">
+                        <div class="status-item-title">한강 모발이식 센터</div>
+                        <div class="status-item-period">2024.01.25 ~ 2024.01.27</div>
+                    </div>
+                    <div class="status-item-info">오전 10시 ~ 오후 7시</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 스케줄 등록 -->
+        <div class="section">
+            <div class="schedule-form">
+                <h3 class="form-title">스케줄 등록</h3>
+                <div class="form-group">
+                    <label class="form-label">상태</label>
+                    <select class="form-select">
+                        <option>일하는 기간</option>
+                        <option>구인중</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">병원명</label>
+                    <input type="text" class="form-input" placeholder="병원명을 입력하세요" />
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">시작일</label>
+                        <input type="date" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">종료일</label>
+                        <input type="date" class="form-input" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">시작시간</label>
+                        <input type="time" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">종료시간</label>
+                        <input type="time" class="form-input" />
+                    </div>
+                </div>
+                <button class="form-btn">등록하기</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<nav>
+    <button class="nav-item">
+        <img src="icon/home.png" alt="홈" />
+    </button>
+    <button class="nav-item active">
+        <img src="icon/schedule.png" alt="일정" />
+    </button>
+    <button class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="m16.034,18.101c1.84.992,3.285,2.63,3.913,4.652.094.303.039.634-.15.89s-.487.407-.805.407H4.993c-.318,0-.617-.151-.805-.407s-.244-.586-.15-.89c.63-2.026,2.079-3.666,3.924-4.658.473-.254,1.061-.148,1.405.265l1.949,2.338c.356.427,1.012.427,1.368,0l1.944-2.333c.344-.413.933-.519,1.406-.264Zm4.622-15.451L14.192.369c-1.388-.491-2.916-.492-4.303-.006L3.346,2.653c-.818.286-1.346,1.03-1.346,1.896,0,.867.529,1.611,1.347,1.896l6.507,2.27c.689.24,1.414.361,2.138.361s1.448-.121,2.137-.361l5.864-2.045v4.379c0,.552.448,1,1,1s1-.448,1-1c0,0,.004-6.493.004-6.502.001-.865-.525-1.61-1.34-1.898Zm-2.664,6.836l-3.205,1.118c-1.798.627-3.793.627-5.592,0l-3.203-1.118v.563c0,3.309,2.691,6,6,6s6-2.691,6-6v-.564Z"/>
+        </svg>
+    </button>
+    <button class="nav-item">
+        <img src="icon/hospital.png" alt="병원" />
+    </button>
+    <button class="nav-item">
+        <img src="icon/user.png" alt="마이페이지" />
+    </button>
+</nav>
+
+</body>
+</html>
