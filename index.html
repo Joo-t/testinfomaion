@@ -1,67 +1,191 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INHAIR</title>
-    <link rel="stylesheet" href="common.css">
+    <meta charset="UTF-8" />
+    <title>inhair</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Pretendard, Apple SD Gothic Neo, sans-serif;
+        }
+
         body {
+            height: 100vh;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: relative;
+            z-index: 10;
+            height: 70px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            background: transparent;
         }
 
-        .page-list {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 3rem;
-            max-width: 500px;
-            width: 90%;
+        /* ===== SPLIT BACKGROUND ===== */
+        .bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
         }
 
-        .page-list h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
+        .bg-white {
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            clip-path: polygon(
+                    0 0,
+                    60% 0,
+                    48% 55%,
+                    62% 100%,
+                    0 100%
+            );
         }
 
-        .page-item {
-            display: block;
-            background-color: #667eea;
-            color: white;
+        .bg-black {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            clip-path: polygon(
+                    60% 0,
+                    100% 0,
+                    100% 100%,
+                    62% 100%,
+                    48% 55%
+            );
+        }
+
+        /* ===== CONTENT ===== */
+        main {
+            position: relative;
+            z-index: 10;
+            height: calc(100vh - 140px);
+            display: flex;
+            padding: 0 6vw;
+        }
+
+        .left,
+        .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        .left p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #111;
+            white-space: pre-line;
+        }
+
+        .right h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .right p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #eaeaea;
+            white-space: pre-line;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            position: relative;
+            z-index: 10;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding-left: 6vw;
+        }
+
+        footer a {
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
             text-decoration: none;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-            margin-bottom: 1rem;
         }
 
-        .page-item:hover {
-            background-color: #5568d3;
-            transform: translateY(-2px);
+        footer a:hover {
+            text-decoration: underline;
         }
 
-        .page-item:last-child {
-            margin-bottom: 0;
+        /* ===== MOBILE 대응 ===== */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                padding: 0 8vw;
+            }
+
+            .left, .right {
+                align-items: flex-start;
+            }
+
+            .right {
+                margin-top: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="page-list">
-        <h1>페이지 목록</h1>
-        <a href="page1.html" class="page-item">의사 - 스케줄 관리</a>
-        <a href="page2.html" class="page-item">의사 - 분리사스케줄</a>
-        <a href="page3.html" class="page-item">의사 - 분리사 평가</a>
-        <a href="page4.html" class="page-item">분리사 - 내 프로필</a>
-        <a href="page5.html" class="page-item">분리사 - 스케줄관리</a>
-        <a href="page6.html" class="page-item">분리사 - 강의자료</a>
-        <a href="page8.html" class="page-item">분리사 - 의사 스케줄 지원</a>
-    </div>
+
+<header>inhair</header>
+
+<div class="bg">
+    <div class="bg-white"></div>
+    <div class="bg-black"></div>
+</div>
+
+<main>
+    <section class="left">
+        <h2>모낭분리사란?</h2>
+        <p>
+            모발이식 수술 과정에서
+            모낭을 정밀하게 분리하는
+            전문 의료 기술 인력입니다.
+        </p>
+    </section>
+
+    <section class="right">
+        <h2>
+            기술은<br />
+            기록되어야 합니다.
+        </h2>
+        <p>
+            inhair는
+            모낭분리사의
+            스케줄 · 교육 · 등급을
+            하나로 관리합니다.
+        </p>
+    </section>
+</main>
+
+<footer>
+    <a href="#">더 알아보기 →</a>
+</footer>
+
 </body>
 </html>
