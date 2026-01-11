@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <title>INHAIR 아카데미</title>
+    <title>inhair</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
@@ -57,7 +57,7 @@
             height: 100%;
         }
 
-        /* TEXT BLOCKS */
+        /* TEXT */
         .left {
             position: absolute;
             top: 8%;
@@ -100,27 +100,6 @@
             white-space: pre-line;
         }
 
-        /* CTA BUTTON */
-        .cta-signup {
-            margin-top: 28px;
-        }
-
-        .cta-signup button {
-            background: #000;
-            color: #fff;
-            border: 1px solid #000;
-            padding: 14px 28px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .cta-signup button:hover {
-            background: #fff;
-            color: #000;
-        }
-
         /* MOBILE */
         @media (max-width: 768px) {
             .left, .right {
@@ -132,23 +111,23 @@
 
 <body>
 
-<header>inhair</header>
+<header>INHAIR 아카데미</header>
 
 <div class="design-area">
     <div class="bg-svg">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-            <!-- WHITE BACKGROUND -->
+            <!-- WHITE BACKGROUND (풀 캔버스) -->
             <rect x="0" y="0" width="100" height="100" fill="#ffffff" />
 
-            <!-- BLACK SHAPE -->
+            <!-- BLACK : 기준선 정확히 (100,0) → (0,100) -->
             <path
                     d="
-                    M 100 0
-                    C 86 20, 70 38, 54 54
-                    C 38 70, 22 86, 0 100
-                    L 100 100
-                    Z
-                "
+          M 100 0
+          C 86 20, 70 38, 54 54
+          C 38 70, 22 86, 0 100
+          L 100 100
+          Z
+        "
                     fill="#000000"
             />
         </svg>
@@ -175,15 +154,12 @@
             </h2>
             <p>
                 INHAIR 아카데미는
-                모낭분리사 교육 및 양성,
-                병원과의 연결, 등급 관리를
+                모낭분리사 교육 및 양성
+                병원과의 연결, 등급 관리 등을
                 하나로 관리합니다.
-            </p>
 
-            <!-- CTA -->
-            <div class="cta-signup">
-                <button>더 알아보기</button>
-            </div>
+                >> 회원가입 <<
+            </p>
         </section>
     </main>
 </div>
