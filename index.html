@@ -29,7 +29,6 @@
             justify-content: center;
             font-size: 22px;
             font-weight: 800;
-            letter-spacing: 0.4px;
         }
 
         /* DESIGN AREA */
@@ -58,22 +57,21 @@
             height: 100%;
         }
 
-        /* TEXT BLOCKS */
+        /* TEXT */
         .left {
             position: absolute;
             top: 8%;
             left: 7%;
-            max-width: 32%;
+            max-width: 34%;
         }
 
         .right {
             position: absolute;
-            bottom: 10%;
+            bottom: 8%;
             right: 7%;
-            max-width: 32%;
+            max-width: 34%;
         }
 
-        /* WHITE SIDE */
         .left h2 {
             color: #000;
             font-size: 20px;
@@ -88,7 +86,6 @@
             white-space: pre-line;
         }
 
-        /* BLACK SIDE */
         .right h2 {
             color: #fff;
             font-size: 20px;
@@ -103,31 +100,10 @@
             white-space: pre-line;
         }
 
-        /* FOOTER */
-        footer {
-            position: absolute;
-            bottom: 24px;
-            left: 7%;
-            z-index: 10;
-        }
-
-        footer a {
-            font-size: 15px;
-            font-weight: 700;
-            color: #000;
-            text-decoration: none;
-        }
-
         /* MOBILE */
         @media (max-width: 768px) {
-            .left,
-            .right {
+            .left, .right {
                 max-width: 80%;
-            }
-
-            .right {
-                right: 5%;
-                bottom: 6%;
             }
         }
     </style>
@@ -138,26 +114,17 @@
 <header>inhair</header>
 
 <div class="design-area">
-    <!-- SVG BACKGROUND -->
     <div class="bg-svg">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-            <!-- WHITE -->
-            <path
-                    d="
-          M 0 0
-          L 100 0
-          L 0 100
-          Z
-        "
-                    fill="#ffffff"
-            />
-            <!-- BLACK : 우상 → 좌하 / 곡률 강화 -->
+            <!-- WHITE BACKGROUND (풀 캔버스) -->
+            <rect x="0" y="0" width="100" height="100" fill="#ffffff" />
+
+            <!-- BLACK : 기준선 정확히 (100,0) → (0,100) -->
             <path
                     d="
           M 100 0
-          C 90 18, 78 32, 64 46
-          C 50 60, 36 76, 22 92
-          L 0 100
+          C 86 20, 70 38, 54 54
+          C 38 70, 22 86, 0 100
           L 100 100
           Z
         "
@@ -166,9 +133,7 @@
         </svg>
     </div>
 
-    <!-- CONTENT -->
     <main>
-        <!-- WHITE / LEFT TOP -->
         <section class="left">
             <h2>모낭분리사란?</h2>
             <p>
@@ -182,7 +147,6 @@
             </p>
         </section>
 
-        <!-- BLACK / RIGHT BOTTOM -->
         <section class="right">
             <h2>
                 기술은<br />
@@ -196,10 +160,6 @@
             </p>
         </section>
     </main>
-
-    <footer>
-        <a href="#">더 알아보기 →</a>
-    </footer>
 </div>
 
 </body>
