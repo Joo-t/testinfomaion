@@ -100,24 +100,19 @@
             white-space: pre-line;
         }
 
-        /* MOBILE FIX */
+        /* MOBILE */
+        /* MOBILE */
         @media (max-width: 768px) {
             .left {
                 max-width: 80%;
             }
 
             .right {
-                max-width: 70%;
-                right: 5%;
-                bottom: 6%;
+                max-width: 80%;
+                text-align: right;
 
-                /* 핵심: 흰 영역 침범 방지 */
-                clip-path: polygon(
-                        30% 0%,
-                        100% 0%,
-                        100% 100%,
-                        0% 100%
-                );
+                /* 핵심 */
+                padding-left: clamp(32px, 18vw, 96px);
             }
         }
     </style>
@@ -130,15 +125,18 @@
 <div class="design-area">
     <div class="bg-svg">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <!-- WHITE BACKGROUND (풀 캔버스) -->
             <rect x="0" y="0" width="100" height="100" fill="#ffffff" />
+
+            <!-- BLACK : 기준선 정확히 (100,0) → (0,100) -->
             <path
                     d="
-                    M 100 0
-                    C 86 20, 70 38, 54 54
-                    C 38 70, 22 86, 0 100
-                    L 100 100
-                    Z
-                "
+          M 100 0
+          C 86 20, 70 38, 54 54
+          C 38 70, 22 86, 0 100
+          L 100 100
+          Z
+        "
                     fill="#000000"
             />
         </svg>
